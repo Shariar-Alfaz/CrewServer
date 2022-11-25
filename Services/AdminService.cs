@@ -101,5 +101,29 @@ namespace Services
         {
             return  await _adminRepo.Delete(id);
         }
+
+        public async Task<Teacher?> SaveTeacher(TeacherResDTO teacher)
+        {
+            var t = new Teacher()
+            {
+                Email = teacher.Email,
+                UseId = teacher.UserId,
+                Name = teacher.Name,
+                BirthDate = Convert.ToDateTime(teacher.Date)
+            };
+            var pass = new Hash(teacher.Password);
+            var login = new LoginInformation()
+            {
+                LoginEmail = teacher.Email,
+                LoginId = teacher.UserId,
+                PasswordHash = pass.GetHash(),
+                PasswordSalt = pass.GetSalt(),
+                RoleId = 3
+            };
+            var data = await _adminRepo.SaveTeacher(t);
+            var log = await _adminRepo.SaveLoginInfo(login);
+            if (data != null && log) return data;
+            return null;
+        }
     }
 }

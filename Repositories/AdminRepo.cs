@@ -47,14 +47,15 @@ namespace Repositories
         }
         public async Task<bool> CheckIfEmailExist(string email)
         {
-            var admin = await _dataContext.Admins
-                .FirstOrDefaultAsync(a => a.Email.Equals(email));
+            var admin = await _dataContext.LoginInformations
+                .FirstOrDefaultAsync(a => a.LoginEmail.Equals(email));
             return admin != null ? true : false;
         }
 
         public async Task<bool> CheckIfUserIdExist(string id)
         {
-            var admin = await _dataContext.Admins.FirstOrDefaultAsync(a => a.UserId.Equals(id));
+            var admin = await _dataContext.LoginInformations
+                .FirstOrDefaultAsync(a => a.LoginId.Equals(id));
             return admin != null ? true : false;
         }
         public async Task<bool> Delete(int id)
@@ -67,7 +68,7 @@ namespace Repositories
             return await this.Saved();
         }
 
-        public async Task<Admin> Update(Admin? entity)
+        public async Task<Admin> Update(Admin entity)
         {
             await Task.Run(() =>
             {
@@ -99,6 +100,19 @@ namespace Repositories
                 .Select(t => t.LoginInformation).FirstOrDefaultAsync();
             var user = await _dataContext.Admins.FirstOrDefaultAsync(s =>s.Email.Equals(loginInfo.LoginEmail));
             return user;
+        }
+
+        public async Task<Teacher?> SaveTeacher(Teacher teacher)
+        {
+            await _dataContext.AddAsync(teacher);
+            if (await this.Saved())
+            {
+                var t = await _dataContext.Teachers
+                    .FirstOrDefaultAsync(f => f.Email.Equals(teacher.Email));
+                return t;
+            }
+
+            return null;
         }
 
     }

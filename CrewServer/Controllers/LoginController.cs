@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Services;
 using Services.Tools;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrewServer.Controllers
 {
@@ -108,12 +109,12 @@ namespace CrewServer.Controllers
             return Unauthorized();
         }
 
+       
         [HttpGet("Logout")]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout( [FromHeader] string appKey)
         {
-            var token = Request.Headers["appKey"].ToString();
-            if (token == null) return BadRequest();
-            var entityToken = await AllGuard.GetToken(token);
+            if (appKey == null) return BadRequest();
+            var entityToken = await AllGuard.GetToken(appKey);
             bool check = await Task.Run(() => AllGuard.UpdateToken(entityToken));
             return check ? Ok() : BadRequest();
         }

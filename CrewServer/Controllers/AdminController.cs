@@ -84,6 +84,23 @@ namespace CrewServer.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPost("Teacher/Save")]
+        public async Task<IActionResult> SaveTeacher([FromBody] TeacherResDTO teacher)
+        {
+            if(!ModelState.IsValid) return BadRequest(ModelState);
+            var isUserEmailExist = await _adminService.CheckIfEmailExist(teacher.Email);
+            var isUserIdExist = await _adminService.CheckIfUserIdExist(teacher.UserId);
+            if (isUserEmailExist || isUserIdExist) return StatusCode(423, "Email or user id is already exist");
+            var t = await _adminService.SaveTeacher(teacher);
+            var sendData = new SendData<Teacher>()
+            {
+                HasError = false,
+                Success = true,
+                SingleData = t
+            };
+            return Ok(sendData);
+        }
         private async Task<Token?> Check(string app)
         {
             var token = await _allGuard.GetToken(app);
