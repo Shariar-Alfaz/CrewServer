@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fCwiaQMD5aPdYhooSJbkasC/BZwchHYQShdk1pUenRE=",
+  "Source": "CrewServer",
+  "BasePath": "_content/CrewServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
