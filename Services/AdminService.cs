@@ -107,15 +107,16 @@ namespace Services
             var t = new Teacher()
             {
                 Email = teacher.Email,
-                UseId = teacher.UserId,
+                UseId = teacher.UseId,
                 Name = teacher.Name,
-                BirthDate = Convert.ToDateTime(teacher.Date)
+                BirthDate = Convert.ToDateTime(teacher.Date),
+                Image="N/A"
             };
             var pass = new Hash(teacher.Password);
             var login = new LoginInformation()
             {
                 LoginEmail = teacher.Email,
-                LoginId = teacher.UserId,
+                LoginId = teacher.UseId,
                 PasswordHash = pass.GetHash(),
                 PasswordSalt = pass.GetSalt(),
                 RoleId = 3
@@ -124,6 +125,35 @@ namespace Services
             var log = await _adminRepo.SaveLoginInfo(login);
             if (data != null && log) return data;
             return null;
+        }
+        public async Task<SendData<Teacher>> UpdateTeacher(TeacherResDTO teacher)
+        {
+            var up = new Teacher()
+            {
+                Id = teacher.Id,
+                Name = teacher.Name,
+                Email = teacher.Email,
+                BirthDate = Convert.ToDateTime(teacher.Date),
+                UseId = teacher.UseId,
+            };
+            var res = await _adminRepo.UpdateTeacher(up);
+            var data = new SendData<Teacher>()
+            {
+                HasError = res == null,
+                Message = res == null ? "Not saved" : "",
+                Success = res != null,
+                SingleData = res
+            };
+            return data;
+        }
+        public async Task<bool> DeleteTeacher(int id)
+        {
+            return await _adminRepo.DeleteTeacher(id);
+        }
+
+        public async Task<List<Teacher?>> GetAllTeacher()
+        {
+            return await _adminRepo.GetAllTeacher();
         }
     }
 }

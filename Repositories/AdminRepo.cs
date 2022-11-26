@@ -114,6 +114,38 @@ namespace Repositories
 
             return null;
         }
+        public async Task<Teacher> UpdateTeacher(Teacher entity)
+        {
+            await Task.Run(() =>
+            {
+                var teacher = _dataContext.Teachers.FirstOrDefault(f => f.Id == entity.Id);
+                var loginInfo = _dataContext.LoginInformations
+                    .FirstOrDefault(f => f.LoginEmail.Equals(teacher.Email));
+                loginInfo.LoginEmail = entity.Email;
+                loginInfo.LoginId = entity.UseId;
+                teacher.Name = entity.Name;
+                teacher.Email = entity.Email;
+                teacher.UseId = entity.UseId;
+                teacher.BirthDate = entity.BirthDate;
+                _dataContext.LoginInformations.Update(loginInfo);
+            });
+            await this.Saved();
+            return entity;
+        }
+        public async Task<bool> DeleteTeacher(int id)
+        {
+            var delete = await _dataContext.Teachers.FirstOrDefaultAsync(f => f.Id == id);
+            var login = await _dataContext.LoginInformations
+                .FirstOrDefaultAsync(f => f.LoginEmail.Equals(delete.Email));
+            _dataContext.Teachers.Remove(delete);
+            _dataContext.LoginInformations.Remove(login);
+            return await this.Saved();
+        }
+
+        public async Task<List<Teacher?>> GetAllTeacher()
+        {
+            return await _dataContext.Teachers.ToListAsync();
+        }
 
     }
 }

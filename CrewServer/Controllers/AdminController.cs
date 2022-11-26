@@ -90,7 +90,7 @@ namespace CrewServer.Controllers
         {
             if(!ModelState.IsValid) return BadRequest(ModelState);
             var isUserEmailExist = await _adminService.CheckIfEmailExist(teacher.Email);
-            var isUserIdExist = await _adminService.CheckIfUserIdExist(teacher.UserId);
+            var isUserIdExist = await _adminService.CheckIfUserIdExist(teacher.UseId);
             if (isUserEmailExist || isUserIdExist) return StatusCode(423, "Email or user id is already exist");
             var t = await _adminService.SaveTeacher(teacher);
             var sendData = new SendData<Teacher>()
@@ -101,11 +101,44 @@ namespace CrewServer.Controllers
             };
             return Ok(sendData);
         }
+
         private async Task<Token?> Check(string app)
         {
             var token = await _allGuard.GetToken(app);
             return token;
         }
 
+        [HttpDelete("Delete/Teacher/{id}")]
+        public async Task<IActionResult> DeleteTeacher(int id)
+        {
+            if (await _adminService.DeleteTeacher(id))
+            {
+                var sendDate = new SendData<string>()
+                {
+                    HasError = false,
+                    Success = true,
+                };
+                return Ok(sendDate);
+            }
+            return BadRequest();
+        }
+        [HttpPost("Update/Teacher")]
+        public async Task<IActionResult> UpdateTeacher([FromBody] TeacherResDTO teacher)
+        {
+            return Ok(await _adminService.UpdateTeacher(teacher));
+        }
+
+        [HttpGet("Get/Teachers")]
+        public async Task<IActionResult> GetTeachers()
+        {
+            var teachers = await _adminService.GetAllTeacher();
+            var sendData = new SendData<Teacher>
+            {
+                HasError = false,
+                Success = true,
+                Data = teachers
+            };
+            return Ok(sendData);
+        }
     }
 }
