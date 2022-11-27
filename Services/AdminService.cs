@@ -155,5 +155,38 @@ namespace Services
         {
             return await _adminRepo.GetAllTeacher();
         }
+
+        public async Task<SendData<Class>> SaveClass(ClassDTO newClass)
+        {
+            var sendData = new SendData<Class>();
+            var c1 = new Class()
+            {
+                Name = newClass.Name,
+                MakeArchive = newClass.MakeArchive,
+                TeacherId = newClass.TeacherId,
+                Id = newClass.Id
+            };
+            var c = await _adminRepo.SaveClass(c1);
+            if (c == null)
+            {
+                sendData.HasError = true;
+                sendData.Success = false;
+                sendData.Message = "This class is already exist";
+                return sendData;
+            }
+            sendData.Success=true;
+            sendData.HasError = false;
+            sendData.SingleData = c;
+            return sendData;
+        }
+
+        public async Task<SendData<Class>> GetClasses()
+        {
+            var sendData= new SendData<Class>();
+            sendData.Success = true;
+            sendData.HasError=false;
+            sendData.Data = await _adminRepo.GetClasses();
+            return sendData;
+        }
     }
 }

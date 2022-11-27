@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity
+namespace Entity.DTO
 {
-    public class Class
+    public class ClassDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public Teacher Teacher { get; set; }
         public int TeacherId { get; set; }
-        public ICollection<StudentClassMap> Students { get; set; }
         public bool MakeArchive { get; set; }
+        [AllowNull]
+        public int Id { get; set; }
     }
 }

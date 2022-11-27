@@ -28,6 +28,10 @@ namespace DataAccess
                 .HasOne<Role>(l => l.Role)
                 .WithMany(r => r.LoginInformations)
                 .HasForeignKey(l => l.RoleId);
+            modelBuilder.Entity<Class>()
+                .HasOne<Teacher>(t => t.Teacher)
+                .WithMany(t => t.Classes)
+                .HasForeignKey(l => l.TeacherId);
             modelBuilder.Entity<StudentClassMap>()
                 .HasKey(sc => new { sc.ClassId, sc.StudentId });
             modelBuilder.Entity<StudentClassMap>()

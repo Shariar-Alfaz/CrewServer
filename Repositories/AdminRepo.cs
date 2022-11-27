@@ -147,5 +147,25 @@ namespace Repositories
             return await _dataContext.Teachers.ToListAsync();
         }
 
+        public async Task<Class?> SaveClass(Class newClass)
+        {
+            if (newClass.Id!=0)
+            {
+                var up = await Task.Run(() => _dataContext.Classes.Update(newClass));
+                await this.Saved();
+                return up.Entity;
+            }
+            var c= await _dataContext.Classes
+                .FirstOrDefaultAsync(f=>f.Name.ToLower().Equals(newClass.Name.ToLower()));
+            if (c != null) return null;
+            var c1 = await _dataContext.Classes.AddAsync(newClass);
+            if (await this.Saved()) return c1.Entity;
+            return null;
+        }
+
+        public async Task<List<Class>> GetClasses()
+        {
+            return await _dataContext.Classes.ToListAsync();
+        }
     }
 }

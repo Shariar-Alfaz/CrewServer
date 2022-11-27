@@ -140,5 +140,18 @@ namespace CrewServer.Controllers
             };
             return Ok(sendData);
         }
+
+        [HttpGet("Get/Classes")]
+        public async Task<IActionResult> GetClasses()
+        {
+            return Ok(await _adminService.GetClasses());
+        }
+
+        [HttpPost("Save/Class")]
+        public async Task<IActionResult> SaveClass([FromBody] ClassDTO request)
+        {
+           // if(!ModelState.IsValid) return BadRequest(ModelState);
+            return Ok(await _adminService.SaveClass(request));
+        }
     }
 }

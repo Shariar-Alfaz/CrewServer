@@ -30,7 +30,7 @@ namespace CrewServer.Controllers
             var refreshToken = await _loginService.GetRefreshToken(request);
             var saved = await _loginService.SaveToken(refreshToken);
             if (!saved) return StatusCode(405,"Fail for login");
-            //this.SetRefreshToken(refreshToken);
+            this.SetRefreshToken(refreshToken);
             var role = await _loginService.GetRole(request.Email);
             if (role == 1)
             {
