@@ -8,7 +8,7 @@ namespace InterFaces
 {
     public interface ICommonRepository<T>
     {
-        Task<List<T?>> GetAll();
+        Task<List<T>> GetAll();
         Task<T?> Save(T entity);
         Task<bool> Delete(int id);
         Task<T> Update (T entity);

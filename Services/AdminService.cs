@@ -188,5 +188,22 @@ namespace Services
             sendData.Data = await _adminRepo.GetClasses();
             return sendData;
         }
+
+        public async Task<SendData<Class>> DeleteClass(int id)
+        {
+            var sendData = new SendData<Class>();
+            if (await _adminRepo.DeleteClass(id))
+            {
+                sendData.Message = "Successfully deleted";
+                sendData.HasError = false;
+                sendData.Success = true;
+                return sendData;
+            }
+
+            sendData.HasError = true;
+            sendData.Success = false;
+            sendData.Message = "Something went wrong in the server";
+            return sendData;
+        }
     }
 }

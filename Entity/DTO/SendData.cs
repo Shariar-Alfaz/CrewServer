@@ -12,7 +12,7 @@ namespace Entity.DTO
         public bool HasError { get; set; } = false;
         public string? Message { get; set; }
         public List<T?> Data { get; set; } = new List<T?>();
-        public bool Success { get; set; }
+        public bool Success { get; set; } = true;
         public T? SingleData { get; set; }
 
         public static implicit operator SendData<T>(SendData<Teacher> v)

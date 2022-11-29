@@ -153,5 +153,11 @@ namespace CrewServer.Controllers
            // if(!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(await _adminService.SaveClass(request));
         }
+
+        [HttpDelete("Delete/Class/{id}")]
+        public async Task<IActionResult> DeleteClass(int id)
+        {
+            return Ok(await _adminService.DeleteClass(id));
+        }
     }
 }

@@ -167,5 +167,12 @@ namespace Repositories
         {
             return await _dataContext.Classes.ToListAsync();
         }
+
+        public async Task<bool> DeleteClass(int id)
+        {
+            var classDelete = await _dataContext.Classes.FirstOrDefaultAsync(f => f.Id == id);
+            if (classDelete != null) _dataContext.Classes.Remove(classDelete);
+            return await this.Saved();
+        }
     }
 }
