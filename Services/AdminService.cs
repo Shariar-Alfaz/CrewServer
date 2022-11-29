@@ -20,6 +20,8 @@ namespace Services
             _adminRepo = adminRepo;
         }
 
+        #region Admin
+
         public async Task<Admin> SaveAdmin(AdminResDTO admin)
         {
             var newAdmin = this.ConvertAdmin(admin);
@@ -102,6 +104,11 @@ namespace Services
             return  await _adminRepo.Delete(id);
         }
 
+        #endregion
+
+
+        #region Teacher
+
         public async Task<Teacher?> SaveTeacher(TeacherResDTO teacher)
         {
             var t = new Teacher()
@@ -156,6 +163,72 @@ namespace Services
             return await _adminRepo.GetAllTeacher();
         }
 
+        #endregion
+
+
+        #region Student
+
+        public async Task<Student?> SaveStudent(StudentResDTO student)
+        {
+            var t = new Student()
+            {
+                Email = student.Email,
+                UserId = student.UserId,
+                Name = student.Name,
+                Phone = student.Phone,                
+                BirthDate = Convert.ToDateTime(student.Date),
+                Image = "N/A"
+            };
+            var pass = new Hash(student.Password);
+            var login = new LoginInformation()
+            {
+                LoginEmail = student.Email,
+                LoginId = student.UserId,
+                PasswordHash = pass.GetHash(),
+                PasswordSalt = pass.GetSalt(),
+                RoleId = 2
+            };
+            var data = await _adminRepo.SaveStudent(t);
+            var log = await _adminRepo.SaveLoginInfo(login);
+            if (data != null && log) return data;
+            return null;
+        }
+        public async Task<SendData<Student>> UpdateStudent(StudentResDTO student)
+        {
+            var up = new Student()
+            {
+                Id = student.Id,
+                Name = student.Name,
+                Email = student.Email,
+                Phone = student.Phone,
+                BirthDate = Convert.ToDateTime(student.Date),
+                UserId = student.UserId,
+            };
+            var res = await _adminRepo.UpdateStudent(up);
+            var data = new SendData<Student>()
+            {
+                HasError = res == null,
+                Message = res == null ? "Not saved" : "",
+                Success = res != null,
+                SingleData = res
+            };
+            return data;
+        }
+        public async Task<bool> DeleteStudent(int id)
+        {
+            return await _adminRepo.DeleteStudent(id);
+        }
+
+        public async Task<List<Student?>> GetAllStudent()
+        {
+            return await _adminRepo.GetAllStudent();
+        }
+
+        #endregion
+
+
+        #region Class
+
         public async Task<SendData<Class>> SaveClass(ClassDTO newClass)
         {
             var sendData = new SendData<Class>();
@@ -205,5 +278,7 @@ namespace Services
             sendData.Message = "Something went wrong in the server";
             return sendData;
         }
+
+        #endregion
     }
 }

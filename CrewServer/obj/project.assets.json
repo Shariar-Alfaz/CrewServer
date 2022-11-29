@@ -8646,23 +8646,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shari\\.nuget\\packages\\": {},
+    "C:\\Users\\emran\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj",
+      "projectUniqueName": "D:\\Thesis\\CrewServer\\CrewServer\\CrewServer.csproj",
       "projectName": "CrewServer",
-      "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj",
-      "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
-      "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\obj\\",
+      "projectPath": "D:\\Thesis\\CrewServer\\CrewServer\\CrewServer.csproj",
+      "packagesPath": "C:\\Users\\emran\\.nuget\\packages\\",
+      "outputPath": "D:\\Thesis\\CrewServer\\CrewServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\emran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8671,18 +8671,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj"
+            "D:\\Thesis\\CrewServer\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Thesis\\CrewServer\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj": {
-              "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj"
+            "D:\\Thesis\\CrewServer\\Services\\Services.csproj": {
+              "projectPath": "D:\\Thesis\\CrewServer\\Services\\Services.csproj"
             }
           }
         }
@@ -8757,7 +8756,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   },
