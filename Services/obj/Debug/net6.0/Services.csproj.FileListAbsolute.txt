@@ -21,3 +21,26 @@ D:\Thesis\Project\New folder\CrewServer\Services\bin\Debug\net6.0\InterFaces.dll
 D:\Thesis\Project\New folder\CrewServer\Services\bin\Debug\net6.0\InterFaces.pdb
 D:\Thesis\Project\New folder\CrewServer\Services\bin\Debug\net6.0\Services.runtimeconfig.json
 D:\Thesis\Project\New folder\CrewServer\Services\obj\Debug\net6.0\Services.genruntimeconfig.cache
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Services.deps.json
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Services.runtimeconfig.json
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Services.dll
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Services.pdb
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\DataAccess.dll
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Entity.dll
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\InterFaces.dll
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Repositories.dll
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Repositories.pdb
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\DataAccess.pdb
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\Entity.pdb
+D:\Thesis\CrewServer\Services\bin\Debug\net6.0\InterFaces.pdb
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.dll
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\refint\Services.dll
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.pdb
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\Services.genruntimeconfig.cache
+D:\Thesis\CrewServer\Services\obj\Debug\net6.0\ref\Services.dll

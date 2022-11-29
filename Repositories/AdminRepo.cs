@@ -20,6 +20,8 @@ namespace Repositories
         {
             _dataContext = dataContext;
         }
+
+        #region admin
         public async Task<List<Admin?>> GetAll()
         {
             return await _dataContext.Admins.ToListAsync();
@@ -102,6 +104,10 @@ namespace Repositories
             return user;
         }
 
+        #endregion
+
+        #region Teacher
+
         public async Task<Teacher?> SaveTeacher(Teacher teacher)
         {
             await _dataContext.AddAsync(teacher);
@@ -147,6 +153,58 @@ namespace Repositories
             return await _dataContext.Teachers.ToListAsync();
         }
 
+        #endregion
+
+        #region Student
+
+        public async Task<Student?> SaveStudent(Student student)
+        {
+            await _dataContext.AddAsync(student);
+            if (await this.Saved())
+            {
+                var t = await _dataContext.Students
+                    .FirstOrDefaultAsync(f => f.Email.Equals(student.Email));
+                return t;
+            }
+
+            return null;
+        }
+        public async Task<Student> UpdateStudent(Student entity)
+        {
+            await Task.Run(() =>
+            {
+                var student = _dataContext.Students.FirstOrDefault(f => f.Id == entity.Id);
+                var loginInfo = _dataContext.LoginInformations
+                    .FirstOrDefault(f => f.LoginEmail.Equals(student.Email));
+                loginInfo.LoginEmail = entity.Email;
+                loginInfo.LoginId = entity.UserId;
+                student.Name = entity.Name;
+                student.Email = entity.Email;
+                student.UserId = entity.UserId;
+                student.BirthDate = entity.BirthDate;
+                _dataContext.LoginInformations.Update(loginInfo);
+            });
+            await this.Saved();
+            return entity;
+        }
+        public async Task<bool> DeleteStudent(int id)
+        {
+            var delete = await _dataContext.Students.FirstOrDefaultAsync(f => f.Id == id);
+            var login = await _dataContext.LoginInformations
+                .FirstOrDefaultAsync(f => f.LoginEmail.Equals(delete.Email));
+            _dataContext.Students.Remove(delete);
+            _dataContext.LoginInformations.Remove(login);
+            return await this.Saved();
+        }
+
+        public async Task<List<Student?>> GetAllStudent()
+        {
+            return await _dataContext.Students.ToListAsync();
+        }
+
+        #endregion
+
+        #region class
         public async Task<Class?> SaveClass(Class newClass)
         {
             if (newClass.Id!=0)
@@ -174,5 +232,7 @@ namespace Repositories
             if (classDelete != null) _dataContext.Classes.Remove(classDelete);
             return await this.Saved();
         }
+
+        #endregion
     }
 }
