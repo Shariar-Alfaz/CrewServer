@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
@@ -58,6 +59,14 @@ namespace Repositories
             var teacher = await Data.Teachers
                 .FirstOrDefaultAsync(f => f.Email.Equals(loginInfo.LoginEmail));
             return teacher;
+        }
+
+        public async Task<List<Class>> GetAllClass(string key)
+        {
+            var me = await this.GetMe(key);
+            var classes = await this.Data.Classes
+                .Where(f => f.TeacherId == me.Id).ToListAsync();
+            return classes;
         }
     }
 }

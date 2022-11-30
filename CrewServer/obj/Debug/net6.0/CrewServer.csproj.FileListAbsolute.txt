@@ -205,3 +205,5 @@ D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\refint\CrewS
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\CrewServer.pdb
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\CrewServer.genruntimeconfig.cache
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\ref\CrewServer.dll
+D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

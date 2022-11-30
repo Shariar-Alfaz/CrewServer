@@ -34,5 +34,14 @@ namespace Services
             }
             return send;
         }
+
+        public async Task<SendData<Class?>> GetAllClasses(string key)
+        {
+            var sendData = new SendData<Class>()
+            {
+                Data = await TeacherRepo.GetAllClass(key)
+            };
+            return sendData;
+        }
     }
 }

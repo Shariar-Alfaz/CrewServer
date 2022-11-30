@@ -21,6 +21,14 @@ namespace CrewServer.Controllers
             if (appkey == null) return StatusCode(401);
             return Ok(await TeacherService.GetMe(appkey));
         }
-        
+
+        [HttpGet("Get/Classes")]
+        public async Task<IActionResult> GetAllClasses([FromHeader] string appkey)
+        {
+            if (appkey == null) return StatusCode(401);
+            var data = await TeacherService.GetAllClasses(appkey);
+            return Ok(data);
+        }
+
     }
 }
