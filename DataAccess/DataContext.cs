@@ -21,6 +21,14 @@ namespace DataAccess
         public DbSet<Role> Roles { get; set; }
         public DbSet<LoginInformation> LoginInformations { get; set; }
         public DbSet<StudentClassMap> StudentClassMaps { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<AnswerScript> AnswerScripts { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Options> Options { get; set; }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<StudentExamMapping> StudentExamMappings { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<StudentsAnswer> StudentsAnswers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

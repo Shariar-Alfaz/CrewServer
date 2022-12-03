@@ -17,5 +17,7 @@ namespace Entity
         public DateTime BirthDate { get; set; }
         public string Image { get; set; }
         public ICollection<StudentClassMap> Classes { get; set; }
+        public ICollection<StudentExamMapping> Exams { get; set; }
+        public ICollection<Result> Results { get; set; }
     }
 }

@@ -50,6 +50,52 @@ namespace DataAccess.Migrations
                     b.ToTable("Admins");
                 });
 
+            modelBuilder.Entity("Entity.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("answer")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId")
+                        .IsUnique();
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("Entity.AnswerScript", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("AnswerScripts");
+                });
+
             modelBuilder.Entity("Entity.Class", b =>
                 {
                     b.Property<int>("Id")
@@ -73,6 +119,41 @@ namespace DataAccess.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Classes");
+                });
+
+            modelBuilder.Entity("Entity.Exam", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<double>("TotalMarks")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("Exams");
                 });
 
             modelBuilder.Entity("Entity.LoginInformation", b =>
@@ -107,6 +188,76 @@ namespace DataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("LoginInformations");
+                });
+
+            modelBuilder.Entity("Entity.Options", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("Entity.Questions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("Entity.Result", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Score")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("Entity.Role", b =>
@@ -180,6 +331,56 @@ namespace DataAccess.Migrations
                     b.ToTable("StudentClassMaps");
                 });
 
+            modelBuilder.Entity("Entity.StudentExamMapping", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentExamMappings");
+                });
+
+            modelBuilder.Entity("Entity.StudentsAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<int>("AnswerScriptId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnswerScriptId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("StudentsAnswers");
+                });
+
             modelBuilder.Entity("Entity.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -240,6 +441,36 @@ namespace DataAccess.Migrations
                     b.ToTable("Tokens");
                 });
 
+            modelBuilder.Entity("Entity.Answer", b =>
+                {
+                    b.HasOne("Entity.Questions", "Questions")
+                        .WithOne("Answer")
+                        .HasForeignKey("Entity.Answer", "QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Entity.AnswerScript", b =>
+                {
+                    b.HasOne("Entity.Exam", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Entity.Class", b =>
                 {
                     b.HasOne("Entity.Teacher", "Teacher")
@@ -251,6 +482,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("Entity.Exam", b =>
+                {
+                    b.HasOne("Entity.Class", "Class")
+                        .WithMany("Exams")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+                });
+
             modelBuilder.Entity("Entity.LoginInformation", b =>
                 {
                     b.HasOne("Entity.Role", "Role")
@@ -260,6 +502,47 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Entity.Options", b =>
+                {
+                    b.HasOne("Entity.Questions", "Questions")
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Entity.Questions", b =>
+                {
+                    b.HasOne("Entity.Exam", "Exam")
+                        .WithMany("Questions")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+                });
+
+            modelBuilder.Entity("Entity.Result", b =>
+                {
+                    b.HasOne("Entity.Exam", "Exam")
+                        .WithMany("Results")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Student", "Student")
+                        .WithMany("Results")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Entity.StudentClassMap", b =>
@@ -281,6 +564,44 @@ namespace DataAccess.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("Entity.StudentExamMapping", b =>
+                {
+                    b.HasOne("Entity.Exam", "Exam")
+                        .WithMany("Students")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Student", "Student")
+                        .WithMany("Exams")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Entity.StudentsAnswer", b =>
+                {
+                    b.HasOne("Entity.AnswerScript", "AnswerScript")
+                        .WithMany("StudentsAnswers")
+                        .HasForeignKey("AnswerScriptId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Questions", "Questions")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AnswerScript");
+
+                    b.Navigation("Questions");
+                });
+
             modelBuilder.Entity("Entity.Token", b =>
                 {
                     b.HasOne("Entity.LoginInformation", "LoginInformation")
@@ -292,14 +613,38 @@ namespace DataAccess.Migrations
                     b.Navigation("LoginInformation");
                 });
 
+            modelBuilder.Entity("Entity.AnswerScript", b =>
+                {
+                    b.Navigation("StudentsAnswers");
+                });
+
             modelBuilder.Entity("Entity.Class", b =>
                 {
+                    b.Navigation("Exams");
+
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("Entity.Exam", b =>
+                {
+                    b.Navigation("Questions");
+
+                    b.Navigation("Results");
+
                     b.Navigation("Students");
                 });
 
             modelBuilder.Entity("Entity.LoginInformation", b =>
                 {
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("Entity.Questions", b =>
+                {
+                    b.Navigation("Answer")
+                        .IsRequired();
+
+                    b.Navigation("Options");
                 });
 
             modelBuilder.Entity("Entity.Role", b =>
@@ -310,6 +655,10 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entity.Student", b =>
                 {
                     b.Navigation("Classes");
+
+                    b.Navigation("Exams");
+
+                    b.Navigation("Results");
                 });
 
             modelBuilder.Entity("Entity.Teacher", b =>

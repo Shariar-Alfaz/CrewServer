@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using Entity;
+using Entity.DTO;
 using InterFaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,6 +68,60 @@ namespace Repositories
             var classes = await this.Data.Classes
                 .Where(f => f.TeacherId == me.Id).ToListAsync();
             return classes;
+        }
+
+        public async Task<Class?> GetClass(int id)
+        {
+            return await Data.Classes.FirstOrDefaultAsync(f => f.Id == id);
+        }
+
+        public async Task<List<Student>> GetStudents(int id)
+        {
+            var students = from s in Data.Students
+                where !(from c in s.Classes
+                        select c.ClassId)
+                    .Contains(id)
+                select s;
+            return await students.ToListAsync();
+        }
+
+        public async Task<List<StudentClassDTO>> SaveStudentsToClass(List<StudentClassDTO> student, int classId)
+        {
+            List<StudentClassMap> maps = new List<StudentClassMap>();
+
+            Parallel.ForEach(student, s =>
+            {
+                maps.Add(this.SaveStudentsAsync(s, classId));
+            });
+            await Data.StudentClassMaps.AddRangeAsync(maps);
+            await this.Saved();
+            return student;
+        }
+
+        private  StudentClassMap SaveStudentsAsync(StudentClassDTO student, int classId)
+        {
+            var map = new StudentClassMap()
+            {
+                StudentId = student.Id,
+                ClassId = classId
+            };
+           return map;
+        }
+
+        public async Task<List<Student>> GetClassStudents(int classId)
+        {
+            var students =  from s in Data.Students
+                where (from c in s.Classes select c.ClassId).Contains(classId)
+                    select s;
+            return await students.ToListAsync();
+        }
+
+        public async Task<bool> RemoveStudentFromClass(int sId, int classId)
+        {
+            var classMap = await Data.StudentClassMaps
+                .FirstOrDefaultAsync(f=>f.ClassId==classId && f.StudentId==sId);
+            Data.StudentClassMaps.Remove(classMap);
+            return await this.Saved();
         }
     }
 }

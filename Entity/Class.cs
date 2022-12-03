@@ -15,5 +15,6 @@ namespace Entity
         public int TeacherId { get; set; }
         public ICollection<StudentClassMap> Students { get; set; }
         public bool MakeArchive { get; set; }
+        public ICollection<Exam> Exams { get; set; }
     }
 }
