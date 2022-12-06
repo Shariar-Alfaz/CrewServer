@@ -98,5 +98,105 @@ namespace Services
             };
             return send;
         }
+
+        public async Task<SendData<Exam>> SaveExam(ExamDTO exam)
+        {
+            var examNew = new Exam()
+            {
+                Title = exam.Title,
+                ClassId = exam.ClassId,
+                Description = exam.Description,
+                EndTime = Convert.ToDateTime(exam.EndTime),
+                StartTime = Convert.ToDateTime(exam.StartTime),
+                TotalMarks = exam.TotalMarks,
+            };
+            var saved = await TeacherRepo.SaveExam(examNew);
+            var send = new SendData<Exam>()
+            {
+                HasError = saved == null,
+                Success = saved != null,
+                Message = saved == null ? "This exam title id already exist." : "",
+                SingleData = saved
+            };
+            return send;
+        }
+
+        public async Task<SendData<Exam>> GetExam(string key)
+        {
+            var send = new SendData<Exam>()
+            {
+                Data = await TeacherRepo.GetExams(key)
+            };
+            return send;
+        }
+
+        public async Task<SendData<string>> SaveQuestion(FinalQuestionDTO question)
+        {
+            var send = new SendData<string>();
+            var qs = new Questions()
+            {
+                Title = question.Question.Title,
+                ExamId = question.Question.ExamId,
+
+            };
+            var q = await TeacherRepo.SaveQuestion(qs);
+            if (q == null)
+            {
+                send.HasError = true;
+                send.Success = false;
+                send.Message = "Question cannot be saved.";
+                return send;
+            }
+
+            var ans = new Answer()
+            {
+                QuestionId = q.Id,
+                answer = question.Question.Answer,
+            };
+            var a = await TeacherRepo.SaveAns(ans);
+            if (!a)
+            {
+                send.HasError = true;
+                send.Success = false;
+                send.Message = "Answer cannot be saved.";
+                return send;
+            }
+
+            List<Options> options = new List<Options>();
+            Parallel.ForEach(question.Option, op =>
+            {
+                options.Add(this.ConvertOption(op,q.Id));
+            });
+            var o = await TeacherRepo.SaveOptions(options);
+            if (!o)
+            {
+                send.HasError = true;
+                send.Success = false;
+                send.Message = "Options cannot be saved.";
+                return send;
+            }
+
+            send.Message = "Successfully saved.";
+            return send;
+        }
+
+        private Options ConvertOption(OptionDTO op,int questionId)
+        {
+            var options = new Options()
+            {
+                QuestionId = questionId,
+                Name = op.Name,
+            };
+            return options;
+        }
+
+        public async Task<SendData<Questions>> GetQuestions(int examId)
+        {
+            var send = new SendData<Questions>()
+            {
+                Data = await TeacherRepo.GetQuestions(examId)
+            };
+            return send;
+        }
     }
 }

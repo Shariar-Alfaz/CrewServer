@@ -64,5 +64,28 @@ namespace CrewServer.Controllers
             return Ok(await TeacherService.RemoveStudentFromClass(sId, classId));
         }
 
+        [HttpPost("Save/Exam")]
+        public async Task<IActionResult> SaveExam([FromBody] ExamDTO exam)
+        {
+            return Ok(await TeacherService.SaveExam(exam));
+        }
+
+        [HttpGet("Get/Exam")]
+        public async Task<IActionResult> GetExam([FromHeader] string appkey)
+        {
+            return Ok(await TeacherService.GetExam(appkey));
+        }
+
+        [HttpPost("Save/Question")]
+        public async Task<IActionResult> SaveQuestion([FromBody] FinalQuestionDTO question)
+        {
+            return Ok(await TeacherService.SaveQuestion(question));
+        }
+
+        [HttpGet("Get/Questions/{examId}")]
+        public async Task<IActionResult> GetQuestions(int examId)
+        {
+            return Ok(await TeacherService.GetQuestions(examId));
+        }
     }
 }

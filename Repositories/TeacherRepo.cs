@@ -123,5 +123,60 @@ namespace Repositories
             Data.StudentClassMaps.Remove(classMap);
             return await this.Saved();
         }
+
+        public async Task<Exam?> SaveExam(Exam exam)
+        {
+            var examN = await Data.Exams
+                .FirstOrDefaultAsync(f => f.Title.ToLower().Equals(exam.Title.ToLower()));
+            if (examN != null)
+                return null;
+            var examS = await Data.Exams.AddAsync(exam);
+            if (await this.Saved()) return examS.Entity;
+            return null;
+
+        }
+
+        public async Task<List<Exam>> GetExams(string key)
+        {
+            var me = await this.GetMe(key);
+            var exams =  from c in Data.Classes
+                         where(c.TeacherId==me.Id) 
+                         select c.Exams.ToList();
+            List<Exam> examList = new List<Exam>();
+            Parallel.ForEach(exams, container =>
+            {
+                Parallel.ForEach(container, exam =>
+                {
+                    examList.Add(exam);
+                });
+            });
+            return examList;
+        }
+
+        public async Task<Questions?> SaveQuestion(Questions question)
+        {
+            var q = await Data.Questions.AddAsync(question);
+            return await this.Saved() ? q.Entity : null;
+        }
+
+        public async Task<bool> SaveAns(Answer answer)
+        {
+            var a = await Data.Answers.AddAsync(answer);
+            return await this.Saved();
+        }
+
+        public async Task<bool> SaveOptions(List<Options> options)
+        {
+            await Data.Options.AddRangeAsync(options);
+            return await this.Saved();
+        }
+
+        public async Task<List<Questions>> GetQuestions(int examId)
+        {
+            var questions = await Data.Questions.Where(f=>f.ExamId==examId)
+                .Include(f=>f.Options)
+                .Select(f=>f).ToListAsync();
+            return questions;
+        }
     }
 }
