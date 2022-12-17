@@ -21,5 +21,6 @@ namespace Entity
         public Class Class { get; set; }
         public ICollection<StudentExamMapping> Students { get; set; }
         public ICollection<Result> Results { get; set; }
+        public ICollection<ExamBlock> ExamBlocks { get; set; }
     }
 }

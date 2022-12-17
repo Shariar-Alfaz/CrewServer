@@ -48,6 +48,8 @@ builder.Services.AddScoped(typeof(AllGuardRepo));
 builder.Services.AddScoped(typeof(TokenRepo));
 builder.Services.AddScoped(typeof(TeacherRepo));
 builder.Services.AddScoped(typeof(TeacherService));
+builder.Services.AddScoped(typeof(StudentRepo));
+builder.Services.AddScoped(typeof(StudentService));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

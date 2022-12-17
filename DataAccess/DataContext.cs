@@ -29,6 +29,11 @@ namespace DataAccess
         public DbSet<StudentExamMapping> StudentExamMappings { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<StudentsAnswer> StudentsAnswers { get; set; }
+        public DbSet<ExamBlock> ExamBlocks { get; set; }
+        public DbSet<ClassTask> ClassTasks { get; set; }
+        public DbSet<StudentClassTaskDetails> StudentClassTaskDetails { get; set; }
+        public DbSet<TaskMonitor> TaskMonitors { get; set; }
+        public DbSet<TaskMonitorScreenShots> TaskMonitorScreenShots { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

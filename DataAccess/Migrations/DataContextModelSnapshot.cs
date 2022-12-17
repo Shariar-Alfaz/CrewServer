@@ -121,6 +121,35 @@ namespace DataAccess.Migrations
                     b.ToTable("Classes");
                 });
 
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<double>("TotalMarks")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("ClassTasks");
+                });
+
             modelBuilder.Entity("Entity.Exam", b =>
                 {
                     b.Property<int>("Id")
@@ -154,6 +183,27 @@ namespace DataAccess.Migrations
                     b.HasIndex("ClassId");
 
                     b.ToTable("Exams");
+                });
+
+            modelBuilder.Entity("Entity.ExamBlock", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("ExamBlocks");
                 });
 
             modelBuilder.Entity("Entity.LoginInformation", b =>
@@ -331,6 +381,36 @@ namespace DataAccess.Migrations
                     b.ToTable("StudentClassMaps");
                 });
 
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ObtainMarks")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubmitedFile")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassTaskId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentClassTaskDetails");
+                });
+
             modelBuilder.Entity("Entity.StudentExamMapping", b =>
                 {
                     b.Property<int>("Id")
@@ -379,6 +459,50 @@ namespace DataAccess.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("StudentsAnswers");
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("StudentClassDetailsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalKeypress")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentClassDetailsId")
+                        .IsUnique();
+
+                    b.ToTable("TaskMonitors");
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitorScreenShots", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ScreenShot")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<int>("TaskMonitorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskMonitorId");
+
+                    b.ToTable("TaskMonitorScreenShots");
                 });
 
             modelBuilder.Entity("Entity.Teacher", b =>
@@ -482,6 +606,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.HasOne("Entity.Class", "Class")
+                        .WithMany("ClassTasks")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+                });
+
             modelBuilder.Entity("Entity.Exam", b =>
                 {
                     b.HasOne("Entity.Class", "Class")
@@ -491,6 +626,17 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Class");
+                });
+
+            modelBuilder.Entity("Entity.ExamBlock", b =>
+                {
+                    b.HasOne("Entity.Exam", "Exam")
+                        .WithMany("ExamBlocks")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
                 });
 
             modelBuilder.Entity("Entity.LoginInformation", b =>
@@ -564,6 +710,25 @@ namespace DataAccess.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.HasOne("Entity.ClassTask", "ClassTask")
+                        .WithMany("StudentClassTaskDetails")
+                        .HasForeignKey("ClassTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Student", "Student")
+                        .WithMany("StudentClassTaskDetailsCollection")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClassTask");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Entity.StudentExamMapping", b =>
                 {
                     b.HasOne("Entity.Exam", "Exam")
@@ -602,6 +767,28 @@ namespace DataAccess.Migrations
                     b.Navigation("Questions");
                 });
 
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.HasOne("Entity.StudentClassTaskDetails", "StudentClassTaskDetails")
+                        .WithOne("TaskMonitor")
+                        .HasForeignKey("Entity.TaskMonitor", "StudentClassDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudentClassTaskDetails");
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitorScreenShots", b =>
+                {
+                    b.HasOne("Entity.TaskMonitor", "TaskMonitor")
+                        .WithMany("TaskMonitorScreenShotsCollection")
+                        .HasForeignKey("TaskMonitorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TaskMonitor");
+                });
+
             modelBuilder.Entity("Entity.Token", b =>
                 {
                     b.HasOne("Entity.LoginInformation", "LoginInformation")
@@ -620,13 +807,22 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entity.Class", b =>
                 {
+                    b.Navigation("ClassTasks");
+
                     b.Navigation("Exams");
 
                     b.Navigation("Students");
                 });
 
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.Navigation("StudentClassTaskDetails");
+                });
+
             modelBuilder.Entity("Entity.Exam", b =>
                 {
+                    b.Navigation("ExamBlocks");
+
                     b.Navigation("Questions");
 
                     b.Navigation("Results");
@@ -659,6 +855,19 @@ namespace DataAccess.Migrations
                     b.Navigation("Exams");
 
                     b.Navigation("Results");
+
+                    b.Navigation("StudentClassTaskDetailsCollection");
+                });
+
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.Navigation("TaskMonitor")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.Navigation("TaskMonitorScreenShotsCollection");
                 });
 
             modelBuilder.Entity("Entity.Teacher", b =>
