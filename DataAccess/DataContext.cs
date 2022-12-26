@@ -55,6 +55,14 @@ namespace DataAccess
                 .HasOne<Class>(c => c.Class)
                 .WithMany(st => st.Students)
                 .HasForeignKey(st => st.ClassId);
+            modelBuilder.Entity<StudentClassTaskDetails>()
+                .HasOne<Student>(f => f.Student)
+                .WithMany(f => f.StudentClassTaskDetailsCollection)
+                .HasForeignKey(f => f.StudentId);
+            modelBuilder.Entity<StudentClassTaskDetails>()
+                .HasOne<ClassTask>(f => f.ClassTask)
+                .WithMany(f => f.StudentClassTaskDetails)
+                .HasForeignKey(f => f.ClassTaskId);
         }
     }
 }

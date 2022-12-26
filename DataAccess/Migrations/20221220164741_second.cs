@@ -13,7 +13,7 @@ namespace DataAccess.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Key",
                 table: "Tokens",
-                type: "varchar(max)",
+                type: "nvarchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
@@ -21,7 +21,7 @@ namespace DataAccess.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "UseId",
                 table: "Teachers",
-                type: "varchar(max)",
+                type: "nvarchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
@@ -45,6 +45,14 @@ namespace DataAccess.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
                 table: "Teachers",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "ScreenShot",
+                table: "TaskMonitorScreenShots",
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
@@ -93,6 +101,14 @@ namespace DataAccess.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
                 table: "Students",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "SubmitedFile",
+                table: "StudentClassTaskDetailss",
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
@@ -156,8 +172,24 @@ namespace DataAccess.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Classes",
+                table: "ClassTasks",
                 type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "ClassTasks",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Classes",
+                type: "nvarchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
@@ -193,39 +225,11 @@ namespace DataAccess.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
-
-            migrationBuilder.CreateTable(
-                name: "ExamBlocks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ExamId = table.Column<int>(type: "int", nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ExamBlocks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ExamBlocks_Exams_ExamId",
-                        column: x => x.ExamId,
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ExamBlocks_ExamId",
-                table: "ExamBlocks",
-                column: "ExamId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ExamBlocks");
-
             migrationBuilder.AlterColumn<string>(
                 name: "Key",
                 table: "Tokens",
@@ -240,7 +244,7 @@ namespace DataAccess.Migrations
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "varchar(max)");
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
@@ -256,7 +260,7 @@ namespace DataAccess.Migrations
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "varchar(max)");
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
@@ -265,6 +269,14 @@ namespace DataAccess.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "ScreenShot",
+                table: "TaskMonitorScreenShots",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Answer",
@@ -305,10 +317,18 @@ namespace DataAccess.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "varchar(max)");
-
+                
             migrationBuilder.AlterColumn<string>(
                 name: "Email",
                 table: "Students",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "SubmitedFile",
+                table: "StudentClassTaskDetailss",
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
@@ -320,7 +340,7 @@ namespace DataAccess.Migrations
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "varchar(max)");
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Title",
@@ -360,11 +380,27 @@ namespace DataAccess.Migrations
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "varchar(max)");
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
                 table: "Exams",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "ClassTasks",
+                type: "varchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "varchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "ClassTasks",
                 type: "varchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),

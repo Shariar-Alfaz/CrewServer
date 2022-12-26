@@ -198,5 +198,64 @@ namespace Services
             };
             return send;
         }
+
+        public async Task<SendData<ClassTask>> SaveClassTask(ClassTaskDTO classTaskDTO)
+        {
+            var classTask = new ClassTask()
+            {
+                Name = classTaskDTO.Name,
+                Description = classTaskDTO.Description,
+                ClassId = classTaskDTO.ClassId,
+                TotalMarks = classTaskDTO.TotalMarks,
+            };
+
+            var data = await TeacherRepo.SaveTask(classTask);
+            
+            List<StudentClassTaskDetails> studentClassTaskDetails = new List<StudentClassTaskDetails>();
+
+            if (data != null)
+            {
+                var students = await TeacherRepo.GetClassStudents(classTaskDTO.ClassId);
+                Parallel.ForEach(students, student =>
+                {
+                    var std = new StudentClassTaskDetails()
+                    {
+                        ClassTaskId = data.Id,
+                        StudentId = student.Id,
+                    };
+                    studentClassTaskDetails.Add(std);
+                });
+
+                await TeacherRepo.AssignStudentToTask(studentClassTaskDetails);
+
+            }
+
+            var send = new SendData<ClassTask>()
+            {
+                SingleData = data,
+                HasError = data==null,
+                Success = data!=null,
+                Message = data==null? "Something went wrong": ""
+            };
+            return send;
+        }
+
+        public async Task<SendData<ClassTask>> GetClassTask(int classId)
+        {
+            var send = new SendData<ClassTask>()
+            {
+                Data = await TeacherRepo.GetClassTask(classId)
+            };
+            return send;
+        }
+
+        public async Task<SendData<Student>> GetStudentTaskDetails(int taskId)
+        {
+            var send = new SendData<Student>()
+            {
+                Data = await TeacherRepo.GetStudentTaskDetails(taskId)
+            };
+            return send;
+        }
     }
 }

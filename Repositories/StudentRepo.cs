@@ -99,5 +99,10 @@ namespace Repositories
             var save = await DataContext.SaveChangesAsync();
             return save > 0 ? true : false;
         }
+
+        public async Task<List<ClassTask>> GetClassTask(int classId)
+        {
+            return await DataContext.ClassTasks.Where(f => f.ClassId == classId).ToListAsync();
+        }
     }
 }

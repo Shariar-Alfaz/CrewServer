@@ -116,6 +116,8 @@ D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\System.Net.H
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\System.Web.Http.dll
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\System.Web.Http.Cors.dll
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
@@ -205,5 +207,3 @@ D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\refint\CrewS
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\CrewServer.pdb
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\CrewServer.genruntimeconfig.cache
 D:\Thesis\Project\New folder\CrewServer\CrewServer\obj\Debug\net6.0\ref\CrewServer.dll
-D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
-D:\Thesis\Project\New folder\CrewServer\CrewServer\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

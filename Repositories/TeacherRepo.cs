@@ -178,5 +178,32 @@ namespace Repositories
                 .Select(f=>f).ToListAsync();
             return questions;
         }
+
+        public async Task<ClassTask?> SaveTask(ClassTask task)
+        {
+            var saveTask=await Data.ClassTasks.AddAsync(task);
+            if(await this.Saved()) 
+                return saveTask.Entity;
+            return null;
+        }
+
+        public async Task<bool> AssignStudentToTask(List<StudentClassTaskDetails> studentClassTaskDetails)
+        {
+            await Data.StudentClassTaskDetails.AddRangeAsync(studentClassTaskDetails);
+            return await this.Saved();
+        }
+        public async Task<List<ClassTask>> GetClassTask(int classId)
+        {
+            return await Data.ClassTasks.Where(f => f.ClassId == classId).ToListAsync();
+        }
+
+        public async Task<List<Student>> GetStudentTaskDetails(int taskId)
+        {
+            var data =  await Data.StudentClassTaskDetails
+                .Where(f=>f.ClassTaskId==taskId)
+                .Select(f=>f.Student)
+                .ToListAsync();
+            return data;
+        }
     }
 }

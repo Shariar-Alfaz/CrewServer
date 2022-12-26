@@ -101,5 +101,14 @@ namespace Services
             };
             return sendData;
         }
+
+        public async Task<SendData<ClassTask>> GetClassTask(int classID)
+        {
+            var sendData = new SendData<ClassTask>()
+            {
+                Data = await StudentRepo.GetClassTask(classID)
+            };
+            return sendData;
+        }
     }
 }

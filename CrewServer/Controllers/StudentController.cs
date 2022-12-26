@@ -58,5 +58,12 @@ namespace CrewServer.Controllers
         {
             return Ok(await StudentService.BlockMe(id, appkey));
         }
+
+        [HttpGet("Get/ClassTask/{id}")]
+        public async Task<IActionResult> GetClassTask(int id)
+        {
+            return Ok(await StudentService.GetClassTask(id));
+        }
+
     }
 }

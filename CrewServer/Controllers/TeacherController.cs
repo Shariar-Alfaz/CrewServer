@@ -8,7 +8,7 @@ namespace CrewServer.Controllers
 {
     [Route("[controller]/api")]
     [ApiController]
-    [Authorize(Roles = "teacher")]
+    //[Authorize(Roles = "teacher")]
     public class TeacherController : Controller
     {
         private readonly TeacherService TeacherService;
@@ -86,6 +86,24 @@ namespace CrewServer.Controllers
         public async Task<IActionResult> GetQuestions(int examId)
         {
             return Ok(await TeacherService.GetQuestions(examId));
+        }
+
+        [HttpPost("Save/Task")]
+        public async Task<IActionResult> SaveTask(ClassTaskDTO classTaskDto)
+        {
+            return Ok(await TeacherService.SaveClassTask(classTaskDto));
+        }
+
+        [HttpGet("Get/ClassTask/{id}")]
+        public async Task<IActionResult> GetClassTask(int id)
+        {
+            return Ok(await TeacherService.GetClassTask(id));
+        }
+
+        [HttpGet("Get/GetStudentTaskDetails/{id}")]
+        public async Task<IActionResult> GetStudentTaskDetails(int id)
+        {
+            return Ok(await TeacherService.GetStudentTaskDetails(id));
         }
     }
 }

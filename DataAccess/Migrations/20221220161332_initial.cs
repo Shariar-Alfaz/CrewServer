@@ -51,7 +51,7 @@ namespace DataAccess.Migrations
                     Phone = table.Column<string>(type: "varchar(max)", nullable: false),
                     UserId = table.Column<string>(type: "varchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Image = table.Column<string>(type: "varchar(max)", nullable: false)
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,6 +142,28 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClassTasks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(max)", nullable: false),
+                    ClassId = table.Column<int>(type: "int", nullable: false),
+                    TotalMarks = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClassTasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ClassTasks_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Exams",
                 columns: table => new
                 {
@@ -191,6 +213,34 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StudentClassTaskDetailss",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    ClassTaskId = table.Column<int>(type: "int", nullable: false),
+                    ObtainMarks = table.Column<double>(type: "float", nullable: false),
+                    SubmitedFile = table.Column<string>(type: "varchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudentClassTaskDetailss", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StudentClassTaskDetailss_ClassTasks_ClassTaskId",
+                        column: x => x.ClassTaskId,
+                        principalTable: "ClassTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StudentClassTaskDetailss_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AnswerScripts",
                 columns: table => new
                 {
@@ -212,6 +262,26 @@ namespace DataAccess.Migrations
                         name: "FK_AnswerScripts_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ExamBlocks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ExamId = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExamBlocks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ExamBlocks_Exams_ExamId",
+                        column: x => x.ExamId,
+                        principalTable: "Exams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -290,6 +360,26 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TaskMonitors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentClassDetailsId = table.Column<int>(type: "int", nullable: false),
+                    TotalKeypress = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskMonitors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskMonitors_StudentClassTaskDetailss_StudentClassDetailsId",
+                        column: x => x.StudentClassDetailsId,
+                        principalTable: "StudentClassTaskDetailss",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Answers",
                 columns: table => new
                 {
@@ -356,6 +446,26 @@ namespace DataAccess.Migrations
                         onDelete: ReferentialAction.NoAction);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TaskMonitorScreenShots",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ScreenShot = table.Column<string>(type: "varchar(max)", nullable: false),
+                    TaskMonitorId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskMonitorScreenShots", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskMonitorScreenShots_TaskMonitors_TaskMonitorId",
+                        column: x => x.TaskMonitorId,
+                        principalTable: "TaskMonitors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Answers_QuestionId",
                 table: "Answers",
@@ -376,6 +486,16 @@ namespace DataAccess.Migrations
                 name: "IX_Classes_TeacherId",
                 table: "Classes",
                 column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassTasks_ClassId",
+                table: "ClassTasks",
+                column: "ClassId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ExamBlocks_ExamId",
+                table: "ExamBlocks",
+                column: "ExamId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Exams_ClassId",
@@ -413,6 +533,16 @@ namespace DataAccess.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_StudentClassTaskDetailss_ClassTaskId",
+                table: "StudentClassTaskDetailss",
+                column: "ClassTaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentClassTaskDetailss_StudentId",
+                table: "StudentClassTaskDetailss",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StudentExamMappings_ExamId",
                 table: "StudentExamMappings",
                 column: "ExamId");
@@ -433,6 +563,17 @@ namespace DataAccess.Migrations
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TaskMonitors_StudentClassDetailsId",
+                table: "TaskMonitors",
+                column: "StudentClassDetailsId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskMonitorScreenShots_TaskMonitorId",
+                table: "TaskMonitorScreenShots",
+                column: "TaskMonitorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tokens_LoginInformationId",
                 table: "Tokens",
                 column: "LoginInformationId");
@@ -446,6 +587,9 @@ namespace DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Answers");
+
+            migrationBuilder.DropTable(
+                name: "ExamBlocks");
 
             migrationBuilder.DropTable(
                 name: "Options");
@@ -463,6 +607,9 @@ namespace DataAccess.Migrations
                 name: "StudentsAnswers");
 
             migrationBuilder.DropTable(
+                name: "TaskMonitorScreenShots");
+
+            migrationBuilder.DropTable(
                 name: "Tokens");
 
             migrationBuilder.DropTable(
@@ -472,16 +619,25 @@ namespace DataAccess.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "LoginInformations");
+                name: "TaskMonitors");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "LoginInformations");
 
             migrationBuilder.DropTable(
                 name: "Exams");
 
             migrationBuilder.DropTable(
+                name: "StudentClassTaskDetailss");
+
+            migrationBuilder.DropTable(
                 name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "ClassTasks");
+
+            migrationBuilder.DropTable(
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Classes");

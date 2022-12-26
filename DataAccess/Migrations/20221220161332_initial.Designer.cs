@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221210073024_second")]
-    partial class second
+    [Migration("20221220161332_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,15 +38,15 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -66,7 +66,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("answer")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -112,7 +112,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
@@ -122,6 +122,35 @@ namespace DataAccess.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Classes");
+                });
+
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("TotalMarks")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.ToTable("ClassTasks");
                 });
 
             modelBuilder.Entity("Entity.Exam", b =>
@@ -137,7 +166,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
@@ -147,7 +176,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("TotalMarks")
                         .HasColumnType("float");
@@ -190,11 +219,11 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("LoginEmail")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LoginId")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -224,7 +253,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
@@ -249,7 +278,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -294,7 +323,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -314,23 +343,23 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -353,6 +382,36 @@ namespace DataAccess.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("StudentClassMaps");
+                });
+
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClassTaskId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ObtainMarks")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubmitedFile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassTaskId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentClassTaskDetailss");
                 });
 
             modelBuilder.Entity("Entity.StudentExamMapping", b =>
@@ -388,7 +447,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Answer")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AnswerScriptId")
                         .HasColumnType("int");
@@ -405,6 +464,50 @@ namespace DataAccess.Migrations
                     b.ToTable("StudentsAnswers");
                 });
 
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("StudentClassDetailsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalKeypress")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentClassDetailsId")
+                        .IsUnique();
+
+                    b.ToTable("TaskMonitors");
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitorScreenShots", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ScreenShot")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskMonitorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskMonitorId");
+
+                    b.ToTable("TaskMonitorScreenShots");
+                });
+
             modelBuilder.Entity("Entity.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -418,19 +521,19 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UseId")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -453,7 +556,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Key")
                         .IsRequired()
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LoginInformationId")
                         .HasColumnType("int");
@@ -504,6 +607,17 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.HasOne("Entity.Class", "Class")
+                        .WithMany("ClassTasks")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("Entity.Exam", b =>
@@ -599,6 +713,25 @@ namespace DataAccess.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.HasOne("Entity.ClassTask", "ClassTask")
+                        .WithMany("StudentClassTaskDetails")
+                        .HasForeignKey("ClassTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Student", "Student")
+                        .WithMany("StudentClassTaskDetailsCollection")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClassTask");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Entity.StudentExamMapping", b =>
                 {
                     b.HasOne("Entity.Exam", "Exam")
@@ -637,6 +770,28 @@ namespace DataAccess.Migrations
                     b.Navigation("Questions");
                 });
 
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.HasOne("Entity.StudentClassTaskDetails", "StudentClassTaskDetails")
+                        .WithOne("TaskMonitor")
+                        .HasForeignKey("Entity.TaskMonitor", "StudentClassDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudentClassTaskDetails");
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitorScreenShots", b =>
+                {
+                    b.HasOne("Entity.TaskMonitor", "TaskMonitor")
+                        .WithMany("TaskMonitorScreenShotsCollection")
+                        .HasForeignKey("TaskMonitorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TaskMonitor");
+                });
+
             modelBuilder.Entity("Entity.Token", b =>
                 {
                     b.HasOne("Entity.LoginInformation", "LoginInformation")
@@ -655,9 +810,16 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entity.Class", b =>
                 {
+                    b.Navigation("ClassTasks");
+
                     b.Navigation("Exams");
 
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("Entity.ClassTask", b =>
+                {
+                    b.Navigation("StudentClassTaskDetails");
                 });
 
             modelBuilder.Entity("Entity.Exam", b =>
@@ -696,6 +858,19 @@ namespace DataAccess.Migrations
                     b.Navigation("Exams");
 
                     b.Navigation("Results");
+
+                    b.Navigation("StudentClassTaskDetailsCollection");
+                });
+
+            modelBuilder.Entity("Entity.StudentClassTaskDetails", b =>
+                {
+                    b.Navigation("TaskMonitor")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.TaskMonitor", b =>
+                {
+                    b.Navigation("TaskMonitorScreenShotsCollection");
                 });
 
             modelBuilder.Entity("Entity.Teacher", b =>
