@@ -12,20 +12,6 @@ D:\Thesis\CrewServer\InterFaces\obj\Debug\net6.0\refint\InterFaces.dll
 D:\Thesis\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.pdb
 D:\Thesis\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.genruntimeconfig.cache
 D:\Thesis\CrewServer\InterFaces\obj\Debug\net6.0\ref\InterFaces.dll
-D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.deps.json
-D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.runtimeconfig.json
-D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.dll
-D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.pdb
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.csproj.AssemblyReference.cache
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.GeneratedMSBuildEditorConfig.editorconfig
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.AssemblyInfoInputs.cache
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.AssemblyInfo.cs
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.csproj.CoreCompileInputs.cache
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.dll
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\refint\InterFaces.dll
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.pdb
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.genruntimeconfig.cache
-D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\ref\InterFaces.dll
 D:\ASP.net\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.deps.json
 D:\ASP.net\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.runtimeconfig.json
 D:\ASP.net\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.dll
@@ -40,3 +26,17 @@ D:\ASP.net\CrewServer\InterFaces\obj\Debug\net6.0\refint\InterFaces.dll
 D:\ASP.net\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.pdb
 D:\ASP.net\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.genruntimeconfig.cache
 D:\ASP.net\CrewServer\InterFaces\obj\Debug\net6.0\ref\InterFaces.dll
+D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.deps.json
+D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.runtimeconfig.json
+D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.dll
+D:\Thesis\Project\New folder\CrewServer\InterFaces\bin\Debug\net6.0\InterFaces.pdb
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.csproj.AssemblyReference.cache
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.GeneratedMSBuildEditorConfig.editorconfig
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.AssemblyInfoInputs.cache
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.AssemblyInfo.cs
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.csproj.CoreCompileInputs.cache
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.dll
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\refint\InterFaces.dll
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.pdb
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\InterFaces.genruntimeconfig.cache
+D:\Thesis\Project\New folder\CrewServer\InterFaces\obj\Debug\net6.0\ref\InterFaces.dll

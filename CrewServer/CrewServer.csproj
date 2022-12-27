@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Upload\Student\TaskMonitor\" />
+    <Folder Include="wwwroot\Student\Monitor\" />
   </ItemGroup>
 
 </Project>

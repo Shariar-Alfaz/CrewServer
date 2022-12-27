@@ -26,9 +26,10 @@ namespace Services
             if(!Hash.VerifyPassword(loginDto.Password,loginInfo.PasswordHash,loginInfo.PasswordSalt)) return null;
             return await Monitor.GetStudent(loginDto.Email);
         }
-        public async Task<List<Class>> GetClasses(int studentId)
+        public async Task<List<ClassTask>> GetClassTask(int studentId)
         {
-            return await Monitor.GetClass(studentId);
+            return await Monitor.GetClassTask(studentId);
         }
+
     }
 }

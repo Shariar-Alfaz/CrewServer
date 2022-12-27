@@ -3918,19 +3918,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SA User\\.nuget\\packages\\": {}
+    "C:\\Users\\shari\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj",
+      "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj",
       "projectName": "Repositories",
-      "projectPath": "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj",
-      "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-      "outputPath": "D:\\ASP.net\\CrewServer\\Repositories\\obj\\",
+      "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj",
+      "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+      "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3938,17 +3943,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj"
+            "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj": {
-              "projectPath": "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj"
+            "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj": {
+              "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj"
             }
           }
         }

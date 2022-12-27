@@ -28,12 +28,11 @@ namespace Repositories
                                         f.LoginId.Equals(info.Email));
             return loginInfo;
         }
-        public async Task<List<Class>> GetClass(int studentId)
+        public async Task<List<ClassTask>> GetClassTask(int studentId)
         {
-            var classes = await DataContext.StudentClassMaps
+            var classes = await DataContext.StudentClassTaskDetails
                 .Where(f => f.StudentId == studentId)
-                .Include(f => f.Class.ClassTasks)
-                .Select(f => f.Class).ToListAsync();
+                .Select(f => f.ClassTask).ToListAsync();
             return classes;
         }
         public async Task<Student?> GetStudent(string email)

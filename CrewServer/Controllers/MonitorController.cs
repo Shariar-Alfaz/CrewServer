@@ -26,21 +26,16 @@ namespace CrewServer.Controllers
             return Ok(data);
         }
 
-        [HttpGet("Get/Classes/{id}")]
-        public async Task<IActionResult> GetClasses(int id)
+        [HttpGet("Get/ClassTask/{id}")]
+        public async Task<IActionResult> GetClassTask(int id)
         {
-            return Ok(await MonitorService.GetClasses(id));
+            return Ok(await MonitorService.GetClassTask(id));
         }
 
         [HttpPost("Save/Monitor")]
-        public async Task<IActionResult> SaveMonitor( int studentId , [FromForm] IFormFile file)
+        public async Task<IActionResult> SaveMonitor( int studentId )
         {
-           
-            string newFileName = file.FileName + DateTime.Now.ToString(CultureInfo.InvariantCulture)+studentId.ToString();
-            if (!System.IO.Directory.Exists(@"wwwroot\Student\TaskMonitor\"+studentId.ToString()))
-            {
-                System.IO.Directory.CreateDirectory(@"wwwroot\Student\TaskMonitor\" + studentId);
-            }
+            
             return Ok();
         }
     }
