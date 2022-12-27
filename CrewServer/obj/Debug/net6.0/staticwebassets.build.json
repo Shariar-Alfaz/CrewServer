@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "fCwiaQMD5aPdYhooSJbkasC/BZwchHYQShdk1pUenRE=",
+  "Hash": "wLIJmP7l6Aml0IwTBUW69ZoruHrWg4qmJGsdJm4tc+g=",
   "Source": "CrewServer",
   "BasePath": "_content/CrewServer",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CrewServer\\wwwroot",
+      "Source": "CrewServer",
+      "ContentRoot": "D:\\ASP.net\\CrewServer\\CrewServer\\wwwroot\\",
+      "BasePath": "_content/CrewServer",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
