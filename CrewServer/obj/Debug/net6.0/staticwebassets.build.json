@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4PcRgoP5TPIzMXobvdJKuBjbDUEYlFinKckhMXly7oA=",
+  "Hash": "wLIJmP7l6Aml0IwTBUW69ZoruHrWg4qmJGsdJm4tc+g=",
   "Source": "CrewServer",
   "BasePath": "_content/CrewServer",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "CrewServer\\wwwroot",
       "Source": "CrewServer",
-      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
+      "ContentRoot": "D:\\ASP.net\\CrewServer\\CrewServer\\wwwroot\\",
       "BasePath": "_content/CrewServer",
       "Pattern": "**"
     }
