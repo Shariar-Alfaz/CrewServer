@@ -69,6 +69,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
+
 app.UseCors(policy);
 
 app.UseHttpsRedirection();

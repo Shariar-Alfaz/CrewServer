@@ -105,5 +105,10 @@ namespace CrewServer.Controllers
         {
             return Ok(await TeacherService.GetStudentTaskDetails(id));
         }
+        [HttpGet("Get/Student/Task/Monitor/{studentId}/{taskId}")]
+        public async Task<IActionResult> GetStudentTaskMonitor(int studentId,int taskId)
+        {
+            return Ok(await TeacherService.GetStudentMonitor(studentId, taskId));
+        }
     }
 }

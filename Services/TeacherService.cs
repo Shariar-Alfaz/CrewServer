@@ -257,5 +257,25 @@ namespace Services
             };
             return send;
         }
+
+        public async Task<SendData<TaskMonitor>> GetStudentMonitor(int studentId,int taskId)
+        {
+            var data = await TeacherRepo.GetStudentMonitor(studentId, taskId);
+            var baseURL = "https://localhost:7022/Student/Monitor/";
+            if (data == null)
+                return new SendData<TaskMonitor>()
+                {
+                    Message = "No data found",
+                };
+            Parallel.ForEach(data.TaskMonitorScreenShotsCollection, (monitor) =>
+            {
+                monitor.ScreenShot = baseURL+ monitor.ScreenShot;
+            });
+            var send = new SendData<TaskMonitor>()
+            {
+                SingleData= data,
+            };
+            return send;
+        }
     }
 }

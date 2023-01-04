@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ASP.net\\CrewServer\\CrewServer\\CrewServer.csproj": {}
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj": {}
   },
   "projects": {
-    "D:\\ASP.net\\CrewServer\\CrewServer\\CrewServer.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\CrewServer\\CrewServer.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj",
         "projectName": "CrewServer",
-        "projectPath": "D:\\ASP.net\\CrewServer\\CrewServer\\CrewServer.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\CrewServer\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\CrewServer.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj"
               },
-              "D:\\ASP.net\\CrewServer\\Services\\Services.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\Services\\Services.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj"
               }
             }
           }
@@ -115,17 +120,21 @@
         }
       }
     },
-    "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\DataAccess\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -133,14 +142,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASP.net\\CrewServer\\Entity\\Entity.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\Entity\\Entity.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\Entity.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\Entity.csproj"
               }
             }
           }
@@ -216,17 +226,21 @@
         }
       }
     },
-    "D:\\ASP.net\\CrewServer\\Entity\\Entity.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\Entity\\Entity.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "D:\\ASP.net\\CrewServer\\Entity\\Entity.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\Entity\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\Entity.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Entity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -234,6 +248,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -313,17 +328,21 @@
         }
       }
     },
-    "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj",
         "projectName": "InterFaces",
-        "projectPath": "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\InterFaces\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -331,6 +350,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -404,17 +424,21 @@
         }
       }
     },
-    "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\Repositories\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -422,17 +446,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\DataAccess\\DataAccess.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\DataAccess\\DataAccess.csproj"
               },
-              "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\InterFaces\\InterFaces.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\InterFaces\\InterFaces.csproj"
               }
             }
           }
@@ -502,17 +527,21 @@
         }
       }
     },
-    "D:\\ASP.net\\CrewServer\\Services\\Services.csproj": {
+    "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.net\\CrewServer\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\ASP.net\\CrewServer\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\SA User\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.net\\CrewServer\\Services\\obj\\",
+        "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\shari\\.nuget\\packages\\",
+        "outputPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\SA User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -520,14 +549,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj": {
-                "projectPath": "D:\\ASP.net\\CrewServer\\Repositories\\Repositories.csproj"
+              "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj": {
+                "projectPath": "D:\\Thesis\\Project\\New folder\\CrewServer\\Repositories\\Repositories.csproj"
               }
             }
           }

@@ -43,6 +43,44 @@ namespace Repositories
                                           || s.UserId.Equals(email));
             return student;
         }
+        public async Task<int> GetDetails(int studenId,int taskId)
+        {
+            return await DataContext.StudentClassTaskDetails
+                .Where(f => f.ClassTaskId == taskId && f.StudentId == studenId)
+                .Select(f => f.Id).FirstOrDefaultAsync();
+                 
+        }
+        public async Task<TaskMonitor?> SaveTaskMonitor(TaskMonitor monitor)
+        {
+           if(monitor.Id == 0)
+            {
+                var m = await DataContext.TaskMonitors.AddAsync(monitor);
+                if (await this.Saved())
+                    return m.Entity;
+            }
+            var n = DataContext.TaskMonitors.Update(monitor);
+            if (await this.Saved())
+            {
+                return n.Entity;
+            }
+            return null;
+        }
 
+        public async Task<TaskMonitor?> CheckForExistMonitor(int studentId , int taskId)
+        {
+            var monitor = await DataContext.StudentClassTaskDetails.Where(f => f.ClassTaskId == taskId && f.StudentId == studentId)
+                .Select(f => f.TaskMonitor).FirstOrDefaultAsync();
+            return monitor;
+        }
+        public async Task<bool> SaveScreenShots(TaskMonitorScreenShots screenShots)
+        {
+            await DataContext.TaskMonitorScreenShots.AddAsync(screenShots);
+            return await this.Saved();
+        }
+        private async Task<bool> Saved()
+        {
+            var save =  await DataContext.SaveChangesAsync();
+            return save > 0;
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Entity
         public string ScreenShot { get; set; }
         [ForeignKey("TaskMonitor")]
         public int TaskMonitorId { get; set; }
+        public DateTime DateTime { get; set; }
         public TaskMonitor TaskMonitor { get; set; }
 
     }

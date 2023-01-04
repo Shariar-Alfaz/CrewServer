@@ -205,5 +205,15 @@ namespace Repositories
                 .ToListAsync();
             return data;
         }
+
+        public async Task<TaskMonitor?> GetStudentMonitor(int studentId,int taskId)
+        {
+            var temp = await Data.StudentClassTaskDetails
+                .Where(f=>f.ClassTaskId==taskId && f.StudentId==studentId)
+                .Include(f=>f.TaskMonitor.TaskMonitorScreenShotsCollection)
+                .Select(f => f.TaskMonitor)
+                .FirstOrDefaultAsync();
+            return temp;
+        }
     }
 }

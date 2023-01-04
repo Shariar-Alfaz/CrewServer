@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wLIJmP7l6Aml0IwTBUW69ZoruHrWg4qmJGsdJm4tc+g=",
+  "Hash": "5ddSH9Y1b8cwmhLEILPp0QOYZxHhtr9DPVvluDBExz8=",
   "Source": "CrewServer",
   "BasePath": "_content/CrewServer",
   "Mode": "Default",
@@ -10,10 +10,79 @@
     {
       "Name": "CrewServer\\wwwroot",
       "Source": "CrewServer",
-      "ContentRoot": "D:\\ASP.net\\CrewServer\\CrewServer\\wwwroot\\",
+      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
       "BasePath": "_content/CrewServer",
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\Student\\Monitor\\914-28-35-926.jpg",
+      "SourceId": "CrewServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
+      "BasePath": "_content/CrewServer",
+      "RelativePath": "Student/Monitor/914-28-35-926.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Student\\Monitor\\914-28-35-926.jpg"
+    },
+    {
+      "Identity": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\Student\\Monitor\\914-35-27-476.jpg",
+      "SourceId": "CrewServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
+      "BasePath": "_content/CrewServer",
+      "RelativePath": "Student/Monitor/914-35-27-476.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Student\\Monitor\\914-35-27-476.jpg"
+    },
+    {
+      "Identity": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\Student\\Monitor\\914-42-51-779.jpg",
+      "SourceId": "CrewServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
+      "BasePath": "_content/CrewServer",
+      "RelativePath": "Student/Monitor/914-42-51-779.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Student\\Monitor\\914-42-51-779.jpg"
+    },
+    {
+      "Identity": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\Student\\Monitor\\914-43-31-704.jpg",
+      "SourceId": "CrewServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Thesis\\Project\\New folder\\CrewServer\\CrewServer\\wwwroot\\",
+      "BasePath": "_content/CrewServer",
+      "RelativePath": "Student/Monitor/914-43-31-704.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Student\\Monitor\\914-43-31-704.jpg"
+    }
+  ]
 }
